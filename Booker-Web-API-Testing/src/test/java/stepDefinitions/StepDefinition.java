@@ -21,8 +21,8 @@ import resources.Utils;
 
 public class StepDefinition {
 	Utils utils = new Utils();
-	RequestSpecification reqLogin;
-	RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com")
+	RequestSpecification request;
+	RequestSpecification requestSpec = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com")
 			.setContentType(ContentType.JSON).build();
 	Response response;
 	JsonPath js;
@@ -32,11 +32,11 @@ public class StepDefinition {
 	    LoginRequest loginRequest = new LoginRequest();
 		loginRequest.setUsername("admin");
 		loginRequest.setPassword("password123");
-		reqLogin = given().spec(req).body(loginRequest);
+		request = given().spec(requestSpec).body(loginRequest);
 	}
 	@When("user sends a POST request to restful-booker authentication api")
 	public void user_sends_a_post_request_to_restful_booker_authentication_api() {
-		response = reqLogin.when().post("/auth");
+		response = request.when().post("/auth");
 	}
 	@Then("the API call is successful with status code {int}")
 	public void the_api_call_is_successful_with_status_code(Integer int1) {
