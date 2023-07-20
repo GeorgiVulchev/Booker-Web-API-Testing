@@ -28,7 +28,6 @@ public class GenerateToken {
 			.setContentType(ContentType.JSON).build();
 	Response response;
 	LoginResponse loginResponse;
-	JsonPath js;
 
 	@Given("valid user credentials")
 	public void valid_user_credentials() {
