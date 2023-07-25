@@ -4,18 +4,16 @@ import org.junit.Assert;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static io.restassured.RestAssured.given;
 
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import pojo.LoginRequest;
 import pojo.LoginResponse;
 import resources.TestDataBuild;
 import resources.Utils;
@@ -24,14 +22,12 @@ public class GenerateToken {
 	Utils utils = new Utils();
 	TestDataBuild data = new TestDataBuild();
 	RequestSpecification request;
-	RequestSpecification requestSpec = new RequestSpecBuilder().setBaseUri("https://restful-booker.herokuapp.com")
-			.setContentType(ContentType.JSON).build();
 	Response response;
 	LoginResponse loginResponse;
 
 	@Given("valid user credentials")
-	public void valid_user_credentials() {
-		request = given().spec(requestSpec).body(data.loginRequestDetails());
+	public void valid_user_credentials() throws IOException {
+		request = given().spec(utils.requestSpecification()).body(data.loginRequestDetails());
 	}
 
 	@When("user sends a POST request to restful-booker authentication api")
