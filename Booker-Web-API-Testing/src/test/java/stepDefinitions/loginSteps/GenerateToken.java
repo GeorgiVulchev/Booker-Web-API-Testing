@@ -15,6 +15,7 @@ import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.LoginResponse;
+import resources.APIResources;
 import resources.TestDataBuild;
 import resources.Utils;
 
@@ -30,9 +31,15 @@ public class GenerateToken {
 		request = given().spec(utils.requestSpecification()).body(data.loginRequestDetails());
 	}
 
-	@When("user sends a POST request to restful-booker authentication api")
-	public void user_sends_a_post_request_to_restful_booker_authentication_api() {
-		response = request.when().post("/auth");
+	@When("user calls {string} with {string} http request")
+	public void user_calls_with_http_request(String resource, String httpMethod) {
+		APIResources resourceAPI = APIResources.valueOf(resource);
+		resourceAPI.getResource();
+
+		if (httpMethod.equalsIgnoreCase("POST"))
+			response = request.when().post(resourceAPI.getResource());
+		else if (httpMethod.equalsIgnoreCase("GET"))
+			response = request.when().get(resourceAPI.getResource());
 	}
 
 	@Then("the API call is successful with status code {int}")
