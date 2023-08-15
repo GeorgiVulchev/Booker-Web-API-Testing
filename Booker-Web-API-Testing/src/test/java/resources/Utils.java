@@ -19,11 +19,13 @@ public class Utils {
 	RequestSpecification requestSpec;
 
 	public RequestSpecification requestSpecification() throws IOException {
-		PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
-		requestSpec = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
-				.addFilter(RequestLoggingFilter.logRequestTo(log)).addFilter(ResponseLoggingFilter.logResponseTo(log))
-				.setContentType(ContentType.JSON).build();
-
+		if (requestSpec == null) {
+			PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
+			requestSpec = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+					.addFilter(RequestLoggingFilter.logRequestTo(log))
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(ContentType.JSON).build();
+			return requestSpec;
+		}
 		return requestSpec;
 	}
 
