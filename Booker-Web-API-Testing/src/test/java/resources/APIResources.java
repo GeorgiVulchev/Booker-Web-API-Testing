@@ -2,8 +2,8 @@ package resources;
 
 public enum APIResources {
 
-	authAPI("/auth");
-	
+	authAPI("/auth"),
+	createBookingAPI("/booking");
 	private String resource;
 	
 	APIResources(String resource){
