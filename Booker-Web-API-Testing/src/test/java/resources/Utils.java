@@ -18,12 +18,15 @@ public class Utils {
 
 	RequestSpecification requestSpec;
 
+	// TODO this method should be optimised.
 	public RequestSpecification requestSpecification() throws IOException {
 		if (requestSpec == null) {
 			PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
 			requestSpec = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+					.setContentType(ContentType.JSON).addHeader("Accept", "application/json")
 					.addFilter(RequestLoggingFilter.logRequestTo(log))
-					.addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(ContentType.JSON).build();
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).build();
+
 			return requestSpec;
 		}
 		return requestSpec;
