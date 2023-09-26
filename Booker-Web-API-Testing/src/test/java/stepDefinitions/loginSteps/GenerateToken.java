@@ -23,7 +23,7 @@ public class GenerateToken {
 	Utils utils = new Utils();
 	TestDataBuild data = new TestDataBuild();
 	RequestSpecification request;
-	Response response;
+	public Response response;
 	LoginResponse loginResponse;
 
 	@Given("valid user credentials")
