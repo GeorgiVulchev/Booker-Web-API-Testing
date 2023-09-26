@@ -10,12 +10,13 @@ import stepDefinitions.loginSteps.GenerateToken;
 public class Hooks {
 	private static GenerateToken generateToken = new GenerateToken();
 
-	@Before("@CreateBooking")
+	//These methods will be used whenever a request requires a token.
+	@Before("UpdateBooking")
 	public void beforeScenario() throws IOException {
 		generateToken.valid_user_credentials();
 		generateToken.user_calls_with_http_request("authAPI", "POST");
 	}
-	
+
 	public static String getToken() {
 		Response response = generateToken.response;
 		String token = response.as(LoginResponse.class).getToken();
