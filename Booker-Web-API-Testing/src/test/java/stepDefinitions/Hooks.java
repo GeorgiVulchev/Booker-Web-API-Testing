@@ -11,10 +11,10 @@ public class Hooks {
 	private static GenerateToken generateToken = new GenerateToken();
 
 	//These methods will be used whenever a request requires a token.
-	@Before("UpdateBooking")
+	@Before("@UpdateBooking")
 	public void beforeScenario() throws IOException {
 		generateToken.valid_user_credentials();
-		generateToken.user_calls_with_http_request("authAPI", "POST");
+		generateToken.user_makes_an_authentication_attempt();
 	}
 
 	public static String getToken() {
