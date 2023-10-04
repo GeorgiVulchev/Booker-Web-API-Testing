@@ -31,15 +31,12 @@ public class GenerateToken {
 		request = given().spec(utils.requestSpecification()).body(data.loginRequestDetails());
 	}
 
-	@When("user calls {string} with {string} http request")
-	public void user_calls_with_http_request(String resource, String httpMethod) {
-		APIResources resourceAPI = APIResources.valueOf(resource);
+	@When("user makes an authentication attempt")
+	public void user_makes_an_authentication_attempt() {
+		APIResources resourceAPI = APIResources.valueOf("authAPI");
 		resourceAPI.getResource();
 
-		if (httpMethod.equalsIgnoreCase("POST"))
-			response = request.when().post(resourceAPI.getResource());
-		else if (httpMethod.equalsIgnoreCase("GET"))
-			response = request.when().get(resourceAPI.getResource());
+		response = request.when().post(resourceAPI.getResource());
 	}
 
 	@Then("the API call is successful with status code {int}")
