@@ -32,4 +32,22 @@ public class TestDataBuild {
 
 		return createBookingRequestDetails;
 	}
+	
+	public CreateBookingRequest updateBookingRequestDetails() {
+		CreateBookingRequest createBookingRequestDetails = new CreateBookingRequest();
+
+		createBookingRequestDetails.setFirstname("Ivan");
+		createBookingRequestDetails.setLastname("Ivanov");
+		createBookingRequestDetails.setTotalprice(225);
+		createBookingRequestDetails.setDepositpaid(true);
+		createBookingRequestDetails.setAdditionalneeds("Breakfast");
+
+		BookingDates bookingdates = new BookingDates();
+		bookingdates.setCheckin("2023-09-21");
+		bookingdates.setCheckout("2023-09-25");
+
+		createBookingRequestDetails.setBookingdates(bookingdates);
+
+		return createBookingRequestDetails;
+	}
 }
