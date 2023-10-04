@@ -25,6 +25,7 @@ public class UpdateBooking {
 		this.commonSteps = commonSteps;
 	}
 
+// This is a temporary solution for testing purposes
 	@Given("the id of the booking that should be updated")
 	public void the_id_of_the_booking_that_should_be_updated() throws IOException {
 		id = 1802;
