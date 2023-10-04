@@ -31,6 +31,21 @@ public class Utils {
 		}
 		return requestSpec;
 	}
+	
+	public RequestSpecification requestSpecificationWithToken(String token) throws IOException {
+		if (requestSpec == null) {
+			PrintStream log = new PrintStream(new FileOutputStream("log.txt"));
+			requestSpec = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl"))
+					.setContentType(ContentType.JSON)
+					.addHeader("Accept", "application/json")
+					.addHeader("Cookie", "token=" + token) 
+					.addFilter(RequestLoggingFilter.logRequestTo(log))
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).build();
+
+			return requestSpec;
+		}
+		return requestSpec;
+	}
 
 	public String getJsonPath(Response response, String key) {
 		String res = response.asString();
