@@ -3,7 +3,8 @@ package resources;
 public enum APIResources {
 
 	authAPI("/auth"),
-	createBookingAPI("/booking");
+	createBookingAPI("/booking"),
+	updateBookingAPI("/booking/");
 	private String resource;
 	
 	APIResources(String resource){
