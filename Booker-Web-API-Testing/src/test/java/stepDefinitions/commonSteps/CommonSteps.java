@@ -40,8 +40,8 @@ public class CommonSteps {
 	}
 
 	@Then("the API call is successful with status code of {int}")
-	public void the_api_call_is_successful_with_status_code_of(Integer statusCode) {
+	public void the_api_call_is_successful_with_status_code_of(int statusCode) {
 		// response = commonSteps.getResponse();
-		assertEquals(response.getStatusCode(), 200);
+		assertEquals(response.getStatusCode(), statusCode);
 	}
 }
