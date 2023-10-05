@@ -11,7 +11,7 @@ public class Hooks {
 	private static GenerateToken generateToken = new GenerateToken();
 
 	//These methods will be used whenever a request requires a token.
-	@Before("@UpdateBooking")
+	@Before("@CreateBooking or @DeleteBooking")
 	public void beforeScenario() throws IOException {
 		generateToken.valid_user_credentials();
 		generateToken.user_makes_an_authentication_attempt();
