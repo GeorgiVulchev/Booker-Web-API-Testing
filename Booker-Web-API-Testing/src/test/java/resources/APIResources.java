@@ -4,7 +4,8 @@ public enum APIResources {
 
 	authAPI("/auth"),
 	createBookingAPI("/booking"),
-	updateBookingAPI("/booking/");
+	updateBookingAPI("/booking/"),
+	deleteBookingAPI("/booking/");
 	private String resource;
 	
 	APIResources(String resource){
