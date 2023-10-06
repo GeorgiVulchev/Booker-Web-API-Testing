@@ -12,6 +12,8 @@ import resources.TestDataBuild;
 import resources.Utils;
 import stepDefinitions.Hooks;
 import stepDefinitions.commonSteps.CommonSteps;
+import stepDefinitions.createBookingSteps.CreateBooking;
+import stepDefinitions.loginSteps.GenerateToken;
 
 public class UpdateBooking {
 	private int id;
@@ -21,20 +23,19 @@ public class UpdateBooking {
 	private CommonSteps commonSteps;
 	private String token;
 
-	public UpdateBooking(CommonSteps commonSteps) {
+	public UpdateBooking(CommonSteps commonSteps, CreateBooking createBookingSteps) {
 		this.commonSteps = commonSteps;
 	}
 
-// This is a temporary solution for testing purposes
+// The step gets the id of the created booking
 	@Given("the id of the booking that should be updated")
 	public void the_id_of_the_booking_that_should_be_updated() throws IOException {
-		id = 1802;
+		id = commonSteps.getId();
 	}
 
 	@Given("a valid authentication token")
 	public void a_valid_authentication_token() {
-		token = Hooks.getToken();
-		System.out.println(token);
+		token = GenerateToken.getToken();
 	}
 
 	@Given("test data for updating a booking")
