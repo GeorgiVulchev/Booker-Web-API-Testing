@@ -11,6 +11,7 @@ import resources.APIResources;
 import resources.Utils;
 import stepDefinitions.Hooks;
 import stepDefinitions.commonSteps.CommonSteps;
+import stepDefinitions.loginSteps.GenerateToken;
 
 public class DeleteBooking {
 	private int id;
@@ -23,15 +24,14 @@ public class DeleteBooking {
 		this.commonSteps = commonSteps;
 	}
 
-	// This is a temporary solution for testing purposes
 	@Given("the id of the booking that should be deleted")
 	public void the_id_of_the_booking_that_should_be_deleted() {
-		id = 1802;
+		id = commonSteps.getId();
 	}
 
 	@Given("a valid authentication token for delete a booking")
 	public void a_valid_authentication_token_for_delete_a_booking() throws IOException {
-		token = Hooks.getToken();
+		token = GenerateToken.getToken();
 
 		request = given().spec(utils.requestSpecificationWithToken(token));
 		commonSteps.setRequest(request);
