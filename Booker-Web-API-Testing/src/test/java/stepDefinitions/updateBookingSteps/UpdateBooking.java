@@ -23,7 +23,7 @@ public class UpdateBooking {
 	private CommonSteps commonSteps;
 	private String token;
 
-	public UpdateBooking(CommonSteps commonSteps, CreateBooking createBookingSteps) {
+	public UpdateBooking(CommonSteps commonSteps) {
 		this.commonSteps = commonSteps;
 	}
 
@@ -49,7 +49,6 @@ public class UpdateBooking {
 		APIResources resourceAPI = APIResources.valueOf("updateBookingAPI");
 		resourceAPI.getResource();
 
-		System.out.println(resourceAPI.getResource() + id);
 		commonSteps.setResponse(request.when().put(resourceAPI.getResource() + id));
 	}
 }
