@@ -1,9 +1,8 @@
 package pojo;
 
 public class CreateBookingResponse {
-	int bookingid;
-	Booking booking;
-	String additionalneeds;
+	private int bookingid;
+	private Booking booking;
 
 	public int getBookingid() {
 		return bookingid;
@@ -20,13 +19,4 @@ public class CreateBookingResponse {
 	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
-
-	public String getAdditionalneeds() {
-		return additionalneeds;
-	}
-
-	public void setAdditionalneeds(String additionalneeds) {
-		this.additionalneeds = additionalneeds;
-	}
-
 }
