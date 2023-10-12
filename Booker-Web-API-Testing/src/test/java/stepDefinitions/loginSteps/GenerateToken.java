@@ -23,7 +23,7 @@ public class GenerateToken {
 	Utils utils = new Utils();
 	TestDataBuild data = new TestDataBuild();
 	RequestSpecification request;
-	public Response response;
+	public static Response response;
 	LoginResponse loginResponse;
 
 	@Given("valid user credentials")
@@ -48,5 +48,10 @@ public class GenerateToken {
 	public void the_response_body_contains_an_authorization_token() {
 		loginResponse = response.as(LoginResponse.class);
 		Assert.assertNotNull(loginResponse.getToken());
+	}
+	
+	public static String getToken() {
+		String token = response.as(LoginResponse.class).getToken();
+		return token;
 	}
 }
