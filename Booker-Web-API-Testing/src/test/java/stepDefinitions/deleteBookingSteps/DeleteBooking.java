@@ -9,16 +9,15 @@ import io.cucumber.java.en.When;
 import io.restassured.specification.RequestSpecification;
 import resources.APIResources;
 import resources.Utils;
-import stepDefinitions.Hooks;
 import stepDefinitions.commonSteps.CommonSteps;
 import stepDefinitions.loginSteps.GenerateToken;
 
 public class DeleteBooking {
 	private int id;
+	private String token;
 	private RequestSpecification request;
 	private Utils utils = new Utils();
 	private CommonSteps commonSteps;
-	private String token;
 
 	public DeleteBooking(CommonSteps commonSteps) {
 		this.commonSteps = commonSteps;
@@ -42,7 +41,6 @@ public class DeleteBooking {
 		APIResources resourceAPI = APIResources.valueOf("deleteBookingAPI");
 		resourceAPI.getResource();
 
-		System.out.println(resourceAPI.getResource() + id);
 		commonSteps.setResponse(request.when().delete(resourceAPI.getResource() + id));
 	}
 
