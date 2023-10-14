@@ -7,8 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/features", glue = { "stepDefinitions" }, tags = "@E2E", plugin = { "pretty",
-		"html:target/cucumber-reports/report.html" }, monochrome = true)
+		"html:target/cucumber-reports/report.html",
+		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" }, monochrome = true)
 
-//"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
 public class TestRunner {
 }
