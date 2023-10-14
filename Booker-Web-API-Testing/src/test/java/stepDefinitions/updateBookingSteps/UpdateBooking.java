@@ -27,7 +27,6 @@ public class UpdateBooking {
 		this.commonSteps = commonSteps;
 	}
 
-// The step gets the id of the created booking
 	@Given("the id of the booking that should be updated")
 	public void the_id_of_the_booking_that_should_be_updated() throws IOException {
 		id = commonSteps.getId();
